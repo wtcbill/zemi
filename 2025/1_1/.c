@@ -13,15 +13,38 @@ char board[3][3] =
 
 void ai()//简单ai
     {
-        for (int i = 0; i < 3; i++)
+        //如果横竖斜有两个相同的X，把这一条线所有都变成X
+        if ((board[0][0] == board[1][1] || board[0][0] == board[2][2] || board[1][1] == board[2][2]) && (board[0][0] == 'X' || board[1][1] == 'X' || board[2][2] == 'X') && board[0][0] != 'O' && board[1][1] != 'O' && board[2][2] != 'O')
         {
-            if (board[i][j])
-            {
-                /* code */
-            }
-            
+            board[0][0] = 'X';
+            board[1][1] = 'X';
+            board[2][2] = 'X';
+        }
+        if ((board[0][2] == board[1][1] || board[0][2] == board[2][0] || board[1][1] == board[2][0]) && (board[0][2] == 'X' || board[1][1] == 'X' || board[2][0] == 'X') && board[0][2] != 'O' && board[1][1] != 'O' && board[2][0] != 'O')
+        {
+            board[0][2] = 'X';
+            board[1][1] = 'X';
+            board[2][0] = 'X';
         }
         
+        for (int i = 0; i < 3; i++)
+        {
+            if ((board[i][0] == board[i][1] || board[i][0] == board[i][2] || board[i][1] == board[i][2]) && (board[i][0] == 'X' || board[i][1] == 'X' || board[i][2] == 'X') && board[i][0] != 'O' && board[i][1] != 'O' && board[i][2] != 'O')
+            {
+                board[i][0] = 'X';
+                board[i][1] = 'X';
+                board[i][2] = 'X';
+            }
+            if ((board[0][i] == board[1][i] || board[0][i] == board[2][i] || board[1][i] == board[2][i]) && (board[0][i] == 'X' || board[1][i] == 'X' || board[2][i] == 'X') && board[0][i] != 'O' && board[1][i] != 'O' && board[2][i] != 'O')
+            {
+                board[0][i] = 'X';
+                board[1][i] = 'X';
+                board[2][i] = 'X';
+            }                       
+        }
+        
+
+
     }
 
 int main()
